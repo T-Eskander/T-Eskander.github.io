@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    
+body {
+  display: block;
+    background-image: url(images/bg2.jpg);
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+    
+    
+    .main{
+    font-family: Helvetica, Sans-Serif;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%); 
+    margin-top: 0px;
+    }
+    #main{
+        width: 600px;
+        height: 200px;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+
+    }
+
+ul li.checked {
+
+    color : black;
+    text-decoration: line-through;
+    
+}
+
+ul li.checked::before {
+    content: '';
+    position: absolute;
+    border-color: white;
+    transform: rotate(45deg);
+}
+    
+    .text{
+        margin-top: 50px;
+        margin-left: 50px;
+        color : white;
+    }
+    
+    .button{
+        font-size: 20px;
+        color: white;
+        font-weight: 500;
+        
+    }
+    
+    #myInput{
+        width: 300px;
+        height: 30px;
+        font-size: 15px;
+    }
+    
+    .button:hover{
+        color: blueviolet;
+        transition: 0.3s;
+    }
+    
+    
+.nav{
+   
+    color : white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+a:hover{
+color: gold;
+transition: 0.3s;
+}
+    
+</style>
+</head>
+<body>
+    <a  class="nav" href="task1.html">Task1</a>
+    <a class="nav" href="task2.html">Task2</a>
+    <a class="nav" href="task3.html">Task3</a>
+    <a class="nav" href="task3b.html">Task3_part2</a>
+<div class="main">
+<div id="main">
+  <h1 class="text">My To Do List</h1>
+  <input type="text" id="myInput" placeholder="add task...">
+  <span onclick="String()" class="button">Add task</span>
+</div>
+
+<ul id="List">
+
+</ul>
+</div>
+<script>
+
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function String() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("List").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+    
+function filter(e){
+    const todos = todoList.childNodes;
+    switch(e.target.value){
+            case "all":
+            
+    }
+}
+    
+    
+    
+</script>
+
+</body>
+</html>
